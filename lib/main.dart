@@ -1,6 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:ppgresearch/sensor.dart';
-import 'sensor.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -8,7 +9,7 @@ void main() {
   final AppState state = AppState();
 
   final MaterialApp app = MaterialApp(
-    title: 'PPG Example',
+    title: 'PPG Measurement',
     debugShowCheckedModeBanner: false,
     home: ScopedModel<AppState>(model: state, child: PPGExample()),
   );
@@ -17,6 +18,7 @@ void main() {
 
   state.initPPG();
 
+/* Outdated Permision Handling
   handlePermissionResponse(Map<PermissionGroup, PermissionStatus> status) {
     if (status[PermissionGroup.sensors] == PermissionStatus.granted) {
       state.initHR();
@@ -33,6 +35,7 @@ void main() {
   PermissionHandler()
       .checkPermissionStatus(PermissionGroup.sensors)
       .then(handlePermissionStatus);
+      */
 }
 
 class PPGExample extends StatelessWidget {
