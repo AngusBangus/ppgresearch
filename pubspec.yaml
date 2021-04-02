@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  scoped_model: ^1.1.0
+  permission_handler: ^6.1.1
   ppg: ^0.1.9
   flutter:
     sdk: flutter
