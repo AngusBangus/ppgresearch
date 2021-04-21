@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:ppgresearch/sensor.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
+
+export 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart'
+    show
+        Permission,
+        PermissionStatus,
+        PermissionStatusGetters,
+        PermissionWithService,
+        FuturePermissionStatusGetters,
+        ServiceStatus,
+        ServiceStatusGetters,
+        FutureServiceStatusGetters;
+
+PermissionHandlerPlatform get _handler => PermissionHandlerPlatform.instance;
+Future<bool> openAppSettings() => _handler.openAppSettings();
+
+extension PermissionListActions on List<Permission> {
+  /// Requests the user for access to these permissions, if they haven't already
+  /// been granted before.
+  ///
+  /// Returns a [Map] containing the status per requested [Permission].
+  Future<Map<Permission, PermissionStatus>> request() =>
+      _handler.requestPermissions(this);
+}
 
 void main() {
   final AppState state = AppState();
@@ -15,25 +38,6 @@ void main() {
   runApp(app);
 
   state.initPPG();
-
-/* Outdated Permision Handling
-  handlePermissionResponse(Map<PermissionGroup, PermissionStatus> status) {
-    if (status[PermissionGroup.sensors] == PermissionStatus.granted) {
-      state.initHR();
-    }
-  }
-
-  handlePermissionStatus(PermissionStatus status) => status ==
-          PermissionStatus.granted
-      ? state.initHR()
-      : PermissionHandler()
-          .requestPermissions(<PermissionGroup>[PermissionGroup.sensors]).then(
-              handlePermissionResponse);
-
-  PermissionHandler()
-      .checkPermissionStatus(PermissionGroup.sensors)
-      .then(handlePermissionStatus);
-      */
 }
 
 class PPGExample extends StatelessWidget {
