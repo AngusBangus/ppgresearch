@@ -1,6 +1,5 @@
 import 'package:ppg/ppg.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:ppgresearch/main.dart';
 
 class AppState extends Model {
   bool ppgDetected = false, hrDetected = false, hrPermission = false;
