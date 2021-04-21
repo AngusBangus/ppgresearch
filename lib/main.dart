@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ppgresearch/sensor.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
+import 'package:wear/wear.dart';
 
 export 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart'
     show
