@@ -7,7 +7,7 @@ void main() {
   final AppState state = AppState();
 
   final MaterialApp app = MaterialApp(
-    title: 'PPG Example',
+    title: 'PPG Raw Data',
     debugShowCheckedModeBanner: false,
     home: ScopedModel<AppState>(model: state, child: PPGExample()),
   );

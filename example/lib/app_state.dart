@@ -4,8 +4,8 @@ import 'package:scoped_model/scoped_model.dart';
 class AppState extends Model {
   bool ppgDetected = false, hrDetected = false, hrPermission = false;
   List<double> ppgData;
-  double ppgTimestamp;
-  int ppgAccuracy;
+  double hrData, ppgTimestamp, hrTimestamp;
+  int hrAccuracy, ppgAccuracy;
 
   initPPG() => ppgEvents.listen(onNewPPGData);
 
